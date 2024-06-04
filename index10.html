@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change color</title>
+    <style>
+        .contener {
+            width: 100%;
+            height: 550px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        button{
+            width: 130px;
+            height: 40px;
+            background-color: black;
+            color: rgb(249, 245, 245);
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: sans-serif;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+        .container{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contener">
+        <h1>Color Change Example</h1>
+        <div> <button class="btn">Color changes</button>
+            <button class="btn1">stop</button>
+            <div class="container" style="font-size: 30px;"></div>
+        </div>
+        <div></div>
+    </div>
+
+
+</body>
+<script>
+    // randomly change color of body start
+    let body = document.querySelector("body")
+    let btn = document.querySelector(".btn")
+    let btn1 = document.querySelector(".btn1")
+    console.log(btn);
+    console.log(body);
+
+    let intervalId;
+    btn.addEventListener("click", () => {
+        intervalId = setInterval(() => {
+            let red = Math.floor(Math.random() * 256)
+            let green = Math.floor(Math.random() * 256)
+            let blue = Math.floor(Math.random() * 256)
+            let rgb = `rgb(${red},${green},${blue})`
+            body.style.backgroundColor = rgb
+            container.style.color = rgb
+        }, 1000)
+    })
+
+    btn.addEventListener("click", () => {
+        intervalId1 = setInterval(() => {
+            let blue = Math.floor(Math.random() * 256)
+            let green = Math.floor(Math.random() * 256)
+            let red = Math.floor(Math.random() * 256)
+            let rgb = `rgb(${blue},${green},${red})`
+
+            container.style.color = rgb
+        }, 1000)
+    })
+    btn1.addEventListener("click", () => {
+        container.style.color = "black"
+        clearInterval(intervalId)
+        clearInterval(intervalId1)
+    })
+    // randomly change color of body start
+
+    let container = document.querySelector(".container")
+
+
+    let intervalId1 = setInterval(() => {
+        let date = new Date()
+        let hours = date.getHours()
+        let minutes = date.getMinutes()
+        let seconds = date.getSeconds()
+        let time = `${hours} : ${minutes} : ${seconds}`
+        console.log("time is ", time);
+        container.innerText = `${time}`
+    }, 1000)
+</script>
+
+</html>
+
+
